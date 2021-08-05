@@ -18,5 +18,6 @@ export default interface IResult {
   price: string;
   rating: number;
   review_count: number;
+  photos: string[];
   //TODO: finir cette liste
 }

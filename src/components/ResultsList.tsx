@@ -18,6 +18,7 @@ interface ResultsListProps {
 }
 
 const ResultsList = ({ navigation, title, results }: ResultsListProps) => {
+  if (results.length === 0) return null;
   return (
     <View style={styles.resultsList}>
       <Text style={styles.title}>{title}</Text>
@@ -29,7 +30,10 @@ const ResultsList = ({ navigation, title, results }: ResultsListProps) => {
         renderItem={(element) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('ResultsShow')}
+              onPress={() => {
+                if (navigation)
+                  navigation.navigate('ResultsShow', { id: element.item.id });
+              }}
             >
               <ResultsDetails result={element.item} />
             </TouchableOpacity>
